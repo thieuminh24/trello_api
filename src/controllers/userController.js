@@ -91,11 +91,14 @@ const login = async (req, res, next) => {
   try {
     const user = await userModel.auth(req.body);
     const token = generateAccessToken(user._id);
-    console.log(user);
+
     res
       .status(200)
       .cookie("token", token, {
         httpOnly: true, // Không cho phép JavaScript truy cập cookie
+        exprires: new Date(Date.now() + 2 * 24 * 60 * 1000),
+        secure: true,
+        sameSite: "none",
       })
       .json({
         userId: user._id,
