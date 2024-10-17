@@ -21,7 +21,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin:
-      "https://trello-front-end-git-master-thieuminh24s-projects.vercel.app/",
+      "https://trello-front-end-git-master-thieuminh24s-projects.vercel.app",
     methods: ["GET", "POST"],
     credentials: true,
   },
@@ -32,7 +32,7 @@ const START_SERVER = () => {
   app.use(
     cors({
       origin:
-        "https://trello-front-end-git-master-thieuminh24s-projects.vercel.app/", // Địa chỉ frontend
+        "https://trello-front-end-git-master-thieuminh24s-projects.vercel.app", // Địa chỉ frontend
       credentials: true,
     })
   );
