@@ -98,7 +98,7 @@ const START_SERVER = () => {
     });
   });
 
-  server.listen(port, hostname, () => {
+  server.listen(port, () => {
     console.log(`Hello Thieu Minh, I am running at ${hostname}:${port}/`);
   });
 
