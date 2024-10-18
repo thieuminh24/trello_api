@@ -96,8 +96,8 @@ const login = async (req, res, next) => {
       .status(200)
       .cookie("token", token, {
         httpOnly: true, // Không cho phép JavaScript truy cập cookie
-        exprires: new Date(Date.now() + 2 * 24 * 60 * 1000),
-        secure: true,
+        expires: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
+        secure: false,
         sameSite: "none",
       })
       .json({
@@ -112,7 +112,8 @@ const login = async (req, res, next) => {
 const logout = async (req, res) => {
   res.clearCookie("token", {
     httpOnly: true,
-    secure: true,
+    secure: false,
+    sameSite: "none",
   });
   res.status(200).json({ message: "Logged out!" });
 };
