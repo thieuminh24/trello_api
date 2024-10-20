@@ -53,6 +53,22 @@ const createNew = async (data) => {
   }
 };
 
+const update = async (id, data) => {
+  try {
+    const result = await GET_DB()
+      .collection(USER_COLLECTION_NAME)
+      .updateOne(
+        {
+          _id: new ObjectId(id),
+        },
+        { $set: data }
+      );
+    return result;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
 const findOneById = async (id) => {
   try {
     const user = await GET_DB()
@@ -107,5 +123,6 @@ export const userModel = {
   createNew,
   auth,
   findOneById,
+  update,
   updateOne,
 };

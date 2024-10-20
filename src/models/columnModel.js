@@ -72,6 +72,7 @@ const pushCardOrderIds = async (card) => {
 };
 
 const update = async (columnId, updateData) => {
+  // console.log(columnId, updateData);
   try {
     //Lọc ra các trường không phép cập nhật như id và createdAt
     Object.keys(updateData).forEach((fieldName) => {

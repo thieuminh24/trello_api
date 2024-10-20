@@ -14,7 +14,7 @@ const createNew = async (req, res, next) => {
 
 const update = async (req, res, next) => {
   try {
-    const updateColumn = await columnService.update(req.body, req.params.id);
+    const updateColumn = await columnService.update(req.params.id, req.body);
 
     res.status(StatusCodes.OK).json(updateColumn);
   } catch (error) {

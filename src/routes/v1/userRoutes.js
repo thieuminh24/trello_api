@@ -13,13 +13,14 @@ Router.route("/register").post(
 
 Router.route("/login").post(authValidation.auth, userController.login);
 Router.route("/logout").get(authMiddleware.verifyToken, userController.logout);
+
 Router.route("/protected").get(
   authMiddleware.verifyToken,
   userController.verify
 );
 
 Router.route("/active/:active_token").get(userController.activeToken);
-
+Router.route("/update").put(authMiddleware.verifyToken, userController.update);
 Router.route("/").get(authMiddleware.verifyToken, userController.getUser);
 
 // Router.route("/register").post(authValidation.auth, authController.resgister);

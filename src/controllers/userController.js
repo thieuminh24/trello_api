@@ -68,6 +68,36 @@ const createNew = async (req, res, next) => {
   }
 };
 
+const update = async (req, res, next) => {
+  const {
+    firstName,
+    lastName,
+    gender,
+    phone,
+    email,
+    jobTitle,
+    department,
+    organization,
+  } = req.body;
+
+  const data = {
+    firstName,
+    lastName,
+    gender,
+    phone,
+    email,
+    jobTitle,
+    department,
+    organization,
+  };
+  try {
+    const result = await userModel.update(req.body.userId, data);
+    res.status(200).json(result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 const activeToken = async (req, res, next) => {
   const { token } = req.body;
 
@@ -137,5 +167,6 @@ export const userController = {
   login,
   logout,
   verify,
+  update,
   getUser,
 };
