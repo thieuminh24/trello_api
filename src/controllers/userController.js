@@ -22,7 +22,7 @@ const createNew = async (req, res, next) => {
     const result = generateAccessToken(insertedId);
     const token = result.split(".")[1];
 
-    const activationLink = `${process.env.CLIENT_URL}/activate/${token}`;
+    const activationLink = `https://trello-front-end-git-master-thieuminh24s-projects.vercel.app/activate/${token}`;
     const mailOption = {
       from: process.env.EMAIL_USER,
       to: email,
