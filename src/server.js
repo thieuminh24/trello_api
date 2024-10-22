@@ -20,8 +20,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin:
-      "https://trello-front-end-git-master-thieuminh24s-projects.vercel.app",
+    origin: "*",
     // process.env.CLIENT_URL,
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
