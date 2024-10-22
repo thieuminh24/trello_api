@@ -24,6 +24,7 @@ const io = new Server(server, {
     // process.env.CLIENT_URL,
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
+    allowEIO3: true,
   },
 });
 
