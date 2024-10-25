@@ -57,7 +57,7 @@ const createNew = async (req, res, next) => {
         <p>Link sẽ hết hạn sau 1 giờ.</p>`,
     };
 
-    transporter.sendMail(mailOption);
+    await transporter.sendMail(mailOption);
     res.status(StatusCodes.CREATED).json({
       message:
         "Đăng ký thành công! Vui lòng kiểm tra email để kích hoạt tài khoản.",

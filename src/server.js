@@ -20,8 +20,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "*",
-    // process.env.CLIENT_URL,
+    origin: process.env.CLIENT_URL,
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
     allowEIO3: true,
@@ -33,8 +32,8 @@ const START_SERVER = () => {
   app.use(
     cors({
       origin:
-        "https://trello-front-end-git-master-thieuminh24s-projects.vercel.app",
-      // process.env.CLIENT_URL,
+        //"https://trello-front-end-git-master-thieuminh24s-projects.vercel.app",
+        process.env.CLIENT_URL,
       credentials: true,
     })
   );
@@ -96,7 +95,30 @@ const START_SERVER = () => {
       return result;
     });
 
-    // Khi user ngắt kết nối
+    socket.on("itemIsDragging", (id) => {
+      socket.broadcast.emit("itemIsDragging", id);
+    });
+
+    socket.on("newColumnsAfterSort", (data) => {
+      socket.broadcast.emit("newColumnsAfterSort", data);
+    });
+
+    socket.on("newColumnsAfterSort", (data) => {
+      socket.broadcast.emit("newColumnsAfterSort", data);
+    });
+
+    socket.on("addNewColumn", (data) => {
+      socket.broadcast.emit("addNewColumn", data);
+    });
+
+    socket.on("deleteColumn", (data) => {
+      socket.broadcast.emit("deleteColumn", data);
+    });
+
+    socket.on("addNewCard", (data) => {
+      socket.broadcast.emit("addNewCard", data);
+    });
+
     socket.on("disconnect", () => {
       console.log("User disconnected", socket.id);
     });
